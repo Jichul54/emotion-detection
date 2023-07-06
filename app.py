@@ -1,4 +1,5 @@
 from flask import Flask, render_template, Response
+from flask_cors import CORS
 import cv2
 import numpy as np
 from tensorflow.keras.models import model_from_json  
@@ -16,6 +17,7 @@ face_haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/video_feed": {"origins": "http://localhost:3000"}})
 
 camera = cv2.VideoCapture(0)
 
@@ -74,4 +76,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8080)
