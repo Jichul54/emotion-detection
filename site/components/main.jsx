@@ -1,24 +1,22 @@
 import React from "react";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import Image from "next/image";
-
+import Stepper from "./stepper";
+import { ST } from "next/dist/shared/lib/utils";
 
 export default function Main() {
-    return (
-        <Container maxWidth="sm">
-            <Paper variant="outlined" sx={{ my: 3, p: 2 }}>
-                <div className="parallax-content baner-content" id="home">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-8  offset-lg-2">
-                                <h3 className="mt-5"> Real Time Emotion Detection</h3>
-                                <img src="http://localhost:8080/video_feed" width="100%" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Paper>
-        </Container>
-    );
+  return (
+    <Container maxWidth="sm">
+      <Paper variant="outlined" sx={{ my: 3, p: 2 }}>
+        <Typography variant="h4" align="center">
+          Group 1
+        </Typography>
+        <Stepper></Stepper>
+        <h3 className="mt-5"> Real Time Emotion Detection</h3>
+        <img src="http://localhost:8080/video_feed" width="100%" />
+      </Paper>
+    </Container>
+  );
 }
