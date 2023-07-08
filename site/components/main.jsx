@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import Image from "next/image";
 import MyStepper from "./stepper";
 import Buttons from "./buttons";
+import Confirm from "./confirm";
 
 export default function Main() {
   const steps = [
@@ -17,6 +17,7 @@ export default function Main() {
   ];
 
   const [activeStep, setActiveStep] = useState(0);
+  const [isAgreed, setIsAgreed] = useState(false);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -26,13 +27,17 @@ export default function Main() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const agreeChangeHandler = (event) => {
+    setIsAgreed(event.target.checked);
+  };
+
   const [contents, setContents] = useState(null);
 
   useEffect(() => {
     // Function to set contents based on activeStep
     const updateContents = () => {
       if (activeStep === 0) {
-        setContents(<h3>step1</h3>);
+        setContents(<Confirm agreeChangeHandler={agreeChangeHandler} />);
       } else if (activeStep === 1) {
         setContents(<h3>step2</h3>);
       } else if (activeStep === 2) {
@@ -53,11 +58,11 @@ export default function Main() {
     <Container maxWidth="sm">
       <Paper variant="outlined" sx={{ my: 3, p: 2 }}>
         <MyStepper steps={steps} activeStep={activeStep} />
-        <Typography variant="h5" sx={{ marginTop: 2 }} align="center">
+        <Typography variant="h5" sx={{ marginY: 3 }} align="center">
           {steps[activeStep]}
         </Typography>
 
-        {contents}
+        <Container>{contents}</Container>
 
         <Buttons
           steps={steps}
@@ -65,6 +70,7 @@ export default function Main() {
           handleNext={handleNext}
           handleBack={handleBack}
           style={{ float: "right" }}
+          disabled={!isAgreed}
         />
       </Paper>
     </Container>

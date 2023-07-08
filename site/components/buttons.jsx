@@ -9,7 +9,7 @@ export default function Buttons(props) {
           Back
         </Button>
         <Button
-          disabled={props.activeStep === props.steps.length - 1}
+          disabled={props.activeStep === props.steps.length - 1 || props.disabled}
           onClick={props.handleNext}
           color="primary"
         >
