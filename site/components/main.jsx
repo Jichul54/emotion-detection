@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import MyStepper from "./stepper";
 import Buttons from "./buttons";
 import Confirm from "./confirm";
+import Video from "./video";
 
 export default function Main() {
   const steps = [
@@ -39,13 +40,13 @@ export default function Main() {
       if (activeStep === 0) {
         setContents(<Confirm agreeChangeHandler={agreeChangeHandler} />);
       } else if (activeStep === 1) {
-        setContents(<h3>step2</h3>);
+        setContents(<Video detection={false}/>);
       } else if (activeStep === 2) {
         setContents(<h3>step3</h3>);
       } else if (activeStep === 3) {
         setContents(<h3>step4</h3>);
       } else if (activeStep === 4) {
-        setContents(<h3>step5</h3>);
+        setContents(<Video detection={true} />);
       } else if (activeStep === 5) {
         setContents(<h3>step6</h3>);
       }
