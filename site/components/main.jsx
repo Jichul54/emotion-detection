@@ -6,15 +6,14 @@ import MyStepper from "./stepper";
 import Buttons from "./buttons";
 import Confirm from "./confirm";
 import Video from "./video";
+import SatisfactionSurvey from "./satisfactionSurvey";
 
 export default function Main() {
   const steps = [
     "研究の目的",
-    "動画１",
-    "アンケート１",
-    "次の説明",
-    "動画２",
-    "アンケート２",
+    "事前アンケート",
+    "動画視聴",
+    "事後アンケート",
   ];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -40,9 +39,9 @@ export default function Main() {
       if (activeStep === 0) {
         setContents(<Confirm agreeChangeHandler={agreeChangeHandler} />);
       } else if (activeStep === 1) {
-        setContents(<Video detection={false}/>);
+        setContents(<SatisfactionSurvey />);
       } else if (activeStep === 2) {
-        setContents(<h3>step3</h3>);
+        setContents(<Video detection={false} />);
       } else if (activeStep === 3) {
         setContents(<h3>step4</h3>);
       } else if (activeStep === 4) {
